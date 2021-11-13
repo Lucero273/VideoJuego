@@ -8,10 +8,11 @@ public class Sprite {
     private int y;
     
     public int[] pixeles;
-    private final HojaSprites hoja;
+    private HojaSprites hoja;
     
     //Coleccion de Sprites
-    public static Sprite piso = new Sprite(64,2,0,HojaSprites.madera );
+    public static final Sprite VACIO = new Sprite(64,0);
+    public static final Sprite ASFALTO = new Sprite(64,2,0,HojaSprites.madera );
     
     //Fin de la coleccion
     
@@ -31,5 +32,18 @@ public class Sprite {
             }
         }
 
+    }
+    
+    public Sprite(final int lado, final int color){
+        this.lado = lado;
+        pixeles = new int[lado*lado];
+        
+        for(int i = 0; i < pixeles.length; i++){
+            pixeles[i] = color;
+        }
+    }
+    
+    public int obtenLado(){
+        return lado;
     }
 }

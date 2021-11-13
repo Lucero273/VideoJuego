@@ -1,5 +1,7 @@
 package graficos;
 
+import mapa.cuadro.Cuadro;
+
 
 public class Pantalla {
     
@@ -31,7 +33,7 @@ public class Pantalla {
         }
     
     //tomamos en cuenta en que posicion de la pantalla o del mapa nos encontramos
-    
+    //TEMPORAL
     public void mostrar(final int compensacionX, final int compensacionY){
         for(int y = 0; y < alto; y++){
             int posicionY = y + compensacionY;
@@ -46,16 +48,32 @@ public class Pantalla {
             }
             
             //TEMPORAL
-            pixeles[posicionX + posicionY * ancho]= Sprite.piso.pixeles[(x & MASCARA_SPRITE) + (y & MASCARA_SPRITE)*LADO_SPRITE];
-            
+            pixeles[posicionX + posicionY * ancho]= Sprite.ASFALTO.pixeles[(x & MASCARA_SPRITE) + (y & MASCARA_SPRITE)*LADO_SPRITE];
+            }
+         }
+      }
             //FIN TEMPORAL
-        }
+            public void mostrarCuadro(int compensacionX, int compensacionY, Cuadro cuadro){
+                for(int y = 0; y < cuadro.sprite.obtenLado(); y++){
+                    int posicionY = y + compensacionY;
+                    for(int x = 0; x<cuadro.sprite.obtenLado();x++){
+                        int posicionX = x + compensacionX;
+                        //Para que solo se dibuje dentro de la pantalla
+                        if(posicionX < 0 || posicionX > ancho || posicionY > 0 ||posicionY > alto){
+                            break;
+                        }
+                        pixeles[posicionX + posicionY + ancho] = cuadro.sprite.pixeles[x+y*cuadro.sprite.obtenLado()];
+           }
+                    
+     }
         
-        }
-        }
-
-   
+ }
+            public int obtenAncho(){
+                return ancho;
+            }
+            public int obtenAlto(){
+                return alto;
+            }
 }
-    
-    
+   
 

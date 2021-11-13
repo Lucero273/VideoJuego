@@ -14,7 +14,6 @@ public class HojaSprites {
     
     //Coleccion de hojas de Sprites
     public static HojaSprites madera = new HojaSprites("/texturas/hojasprites.png", 256, 256);
-    
     //fin de la coleccion
     
     public HojaSprites(final String ruta, final int ancho, final int alto){

@@ -137,13 +137,15 @@ public class Juego extends Canvas implements Runnable{ //Convertimos la clase pr
          estrategia.show();
 
          fps++;
-     }
+     }       
+        
+
     @Override
     public void run() {
         
         //Temporización
         
-        final int NS_POR_SEGUNDO = 1000000000;   //NS = Nanosegundos 
+        final int NS_POR_SEGUNDO = 1000000000;//NS=Nanosegundos 
         final byte APS_OBJETIVO = 60; //puede variar
         final double NS_POR_ACTUALIZACION = NS_POR_SEGUNDO / APS_OBJETIVO;
         
@@ -152,12 +154,10 @@ public class Juego extends Canvas implements Runnable{ //Convertimos la clase pr
         
         double tiempoTranscurrido;
         double delta = 0;
-        
-        //le decimos a Java que nuestra ventana tenga el foco
+         //le decimos a Java que nuestra ventana tenga el foco
         requestFocus();
         
         //mientras el funcionamiento sea verdadero se ejecutará esto
-        
         while (enFuncionamiento){
             final long inicioBucle = System.nanoTime();
             tiempoTranscurrido = inicioBucle - referenciaActualizacion;
